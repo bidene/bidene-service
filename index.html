@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIDENE SERVICES - Réparation d'Ordinateurs Professionnelle</title>
+    <meta name="description" content="BIDENE SERVICES - Réparation d'ordinateurs, installation Windows, récupération de données, dépannage informatique à Kindonou. Experts professionnels à votre service.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .service-card {
+            background: #1f2937;
+            border: 1px solid #374151;
+        }
+        
+        /* Logo Animation */
+        .logo-container {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Custom animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Button hover effects */
+        .btn-primary {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary::after {
+            content: "";
+            display: block;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            width: 30px;
+            height: 100%;
+            left: -50px;
+            top: 0;
+            transform: skewX(-15deg);
+            transition: all 0.5s ease;
+        }
+        
+        .btn-primary:hover::after {
+            left: 120%;
+        }
+        
+        /* Stats counter animation */
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            animation: pulse-whatsapp 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Service image styling */
+        .service-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        /* Image placeholder styling */
+        .image-placeholder {
+            height: 200px;
+            background: linear-gradient(45deg, #f0f9ff, #e0f2fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .dark .image-placeholder {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+        }
+        
+        /* Theme toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .dark .theme-toggle {
+            background: #374151;
+            color: white;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Loading animation */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 40px;
+            background: #3b82f6;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        /* Custom logo styling */
+        .bidene-logo {
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .theme-toggle {
+                top: 10px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+            }
+            .back-to-top {
+                bottom: 80px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Form validation styling */
+        .form-input:invalid {
+            border-color: #ef4444;
+        }
+        .form-input:valid {
+            border-color: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loadingBar"></div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i data-feather="arrow-up"></i>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i data-feather="moon" class="hidden dark:block"></i>
+        <i data-feather="sun" class="block dark:hidden"></i>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/22997442048" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+        <i data-feather="message-circle"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="logo-container bidene-logo">
+                        <!-- VOTRE LOGO BIDENE SERVICES -->
+                        <svg width="50" height="50" viewBox="0 0 200 200" class="text-blue-600 dark:text-blue-400">
+                            <!-- Fond d'écran d'ordinateur -->
+                            <rect x="30" y="40" width="140" height="100" rx="10" fill="currentColor" opacity="0.9"/>
+                            
+                            <!-- Écran d'ordinateur -->
+                            <rect x="40" y="50" width="120" height="70" fill="#1e40af" opacity="0.8"/>
+                            
+                            <!-- Contenu de l'écran -->
+                            <rect x="50" y="60" width="40" height="15" fill="#60a5fa" opacity="0.9"/>
+                            <rect x="100" y="60" width="40" height="15" fill="#60a5fa" opacity="0.9"/>
+                            <rect x="50" y="80" width="90" height="10" fill="#93c5fd" opacity="0.8"/>
+                            <rect x="50" y="95" width="70" height="10" fill="#93c5fd" opacity="0.8"/>
+                            
+                            <!-- Base de l'ordinateur -->
+                            <rect x="70" y="140" width="60" height="10" fill="currentColor" opacity="0.8"/>
+                            
+                            <!-- Icônes de statut -->
+                            <circle cx="55" cy="165" r="8" fill="#10b981"/>
+                            <circle cx="85" cy="165" r="8" fill="#f59e0b"/>
+                            <circle cx="115" cy="165" r="8" fill="#ef4444"/>
+                            
+                            <!-- Texte BIDENE -->
+                            <text x="100" y="190" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">BIDENE</text>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-xl text-blue-600 dark:text-white">BIDENE SERVICES</span>
+                        <span class="text-sm text-gray-600 dark:text-gray-300">Réparation Informatique</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition duration-300">Accueil</a>
+                    <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition duration-300">Services</a>
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition duration-300">À Propos</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition duration-300">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="mobileMenuButton" aria-label="Ouvrir le menu">
+                    <i data-feather="menu" class="w-6 h-6 text-gray-700 dark:text-gray-300"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed inset-0 bg-white dark:bg-gray-800 z-40 md:hidden" id="mobileMenu">
+        <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+            <div class="flex items-center space-x-4">
+                <div class="logo-container">
+                    <svg width="40" height="40" viewBox="0 0 200 200" class="text-blue-600 dark:text-blue-400">
+                        <rect x="30" y="40" width="140" height="100" rx="10" fill="currentColor" opacity="0.9"/>
+                        <rect x="40" y="50" width="120" height="70" fill="#1e40af" opacity="0.8"/>
+                        <rect x="50" y="60" width="40" height="15" fill="#60a5fa" opacity="0.9"/>
+                        <rect x="100" y="60" width="40" height="15" fill="#60a5fa" opacity="0.9"/>
+                        <rect x="50" y="80" width="90" height="10" fill="#93c5fd" opacity="0.8"/>
+                        <rect x="50" y="95" width="70" height="10" fill="#93c5fd" opacity="0.8"/>
+                        <rect x="70" y="140" width="60" height="10" fill="currentColor" opacity="0.8"/>
+                        <circle cx="55" cy="165" r="8" fill="#10b981"/>
+                        <circle cx="85" cy="165" r="8" fill="#f59e0b"/>
+                        <circle cx="115" cy="165" r="8" fill="#ef4444"/>
+                        <text x="100" y="190" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">BIDENE</text>
+                    </svg>
+                </div>
+                <span class="font-bold text-lg text-blue-600 dark:text-white">BIDENE SERVICES</span>
+            </div>
+            <button id="closeMobileMenu" class="focus:outline-none" aria-label="Fermer le menu">
+                <i data-feather="x" class="w-6 h-6 text-gray-700 dark:text-gray-300"></i>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#" class="text-2xl font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Accueil</a>
+            <a href="#services" class="text-2xl font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Services</a>
+            <a href="#about" class="text-2xl font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">À Propos</a>
+            <a href="#contact" class="text-2xl font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="animate__animated animate__fadeInDown">
+                <h1 class="hero-title text-4xl md:text-6xl font-bold mb-6">BIENVENUE CHEZ <span class="text-yellow-300 animate__animated animate__pulse animate__infinite animate__slower">BIDENE SERVICES</span></h1>
+            </div>
+            <div class="animate__animated animate__fadeInUp animate__delay-1s">
+                <p class="text-xl md:text-2xl mb-6 max-w-3xl mx-auto">
+                    Votre Expert en Réparation d'Ordinateurs
+                </p>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto">
+                    Avec des experts professionnels et expérimentés, votre ordinateur est entre de bonnes mains. Solutions rapides et fiables pour tous vos problèmes informatiques.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="#contact" class="btn-primary bg-white text-blue-600 font-bold py-3 px-8 rounded-lg shadow-lg">
+                    <i data-feather="phone" class="w-5 h-5 inline mr-2"></i>
+                    Obtenir de l'aide
+                </a>
+                <a href="#services" class="btn-primary border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-blue-600 transition duration-300">
+                    <i data-feather="settings" class="w-5 h-5 inline mr-2"></i>
+                    Nos Services
+                </a>
+            </div>
+        </div>
+        
+        <!-- Animated background elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-white opacity-10 animate-pulse"></div>
+            <div class="absolute top-1/4 -right-10 w-16 h-16 rounded-full bg-white opacity-10 animate-pulse" style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-12 h-12 rounded-full bg-white opacity-10 animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-10 right-1/3 w-24 h-24 rounded-full bg-white opacity-10 animate-pulse" style="animation-delay: 1.5s;"></div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md fade-in transition-colors duration-300">
+                <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 counter" data-target="500">0</div>
+                <div class="text-gray-600 dark:text-gray-300">Ordinateurs Réparés</div>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md fade-in transition-colors duration-300">
+                <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">24/7</div>
+                <div class="text-gray-600 dark:text-gray-300">Support d'Urgence</div>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md fade-in transition-colors duration-300">
+                <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 counter" data-target="98">0</div>
+                <div class="text-gray-600 dark:text-gray-300">Taux de Satisfaction</div>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md fade-in transition-colors duration-300">
+                <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 counter" data-target="30">0</div>
+                <div class="text-gray-600 dark:text-gray-300">Minutes de Réponse</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white">À Propos de <span class="text-blue-600 dark:text-blue-400">BIDENE SERVICES</span></h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg">
+                        Fort de plusieurs années d'expérience dans le domaine de l'informatique, <strong>BIDENE SERVICES</strong> s'est imposé comme une référence en matière de réparation et d'assistance informatique.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Notre équipe de techniciens certifiés met à votre service son expertise pour résoudre tous vos problèmes informatiques, qu'il s'agisse de réparation matérielle, de dépannage logiciel, ou de conseils techniques.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="flex items-center">
+                            <i data-feather="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Service Rapide</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Prix Compétitifs</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Experts Certifiés</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Garantie sur Service</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-blue-50 dark:bg-gray-800 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Pourquoi Nous Choisir ?</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i data-feather="zap" class="w-6 h-6 text-blue-600 dark:text-blue-400 mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 dark:text-white">Intervention Rapide</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Nous intervenons dans les plus brefs délais pour résoudre vos problèmes.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="shield" class="w-6 h-6 text-blue-600 dark:text-blue-400 mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 dark:text-white">Service Garanti</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Tous nos services sont garantis pour votre tranquillité d'esprit.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="users" class="w-6 h-6 text-blue-600 dark:text-blue-400 mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 dark:text-white">Expertise Collective</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Une équipe d'experts pour des solutions complètes et adaptées.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Nos <span class="text-blue-600 dark:text-blue-400">Prestations</span></h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Découvrez notre gamme complète de services informatiques professionnels adaptés à tous vos besoins.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 - Installation Windows/Système -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="hard-drive" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Installation de Windows/Système d'exploitation</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Installation et configuration de votre système d'exploitation avec tous les pilotes nécessaires.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 15.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je suis intéressé par l'installation de Windows/Système d'exploitation" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 - Installation Logiciel -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="package" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Installation de Logiciel</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Installation et configuration de tous vos logiciels essentiels pour le travail ou les loisirs.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 5.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je suis intéressé par l'installation de logiciels" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 - Nettoyage Virus -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="shield" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Nettoyage des Virus</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Élimination complète des virus, malwares et autres menaces pour sécuriser votre système.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 10.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je suis intéressé par le nettoyage de virus" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 - Formatage -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="refresh-cw" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Formatage</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Formatage complet de votre ordinateur pour lui redonner une nouvelle jeunesse.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 12.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je suis intéressé par le formatage de mon ordinateur" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 5 - Réseautage -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="wifi" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Réseautage</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Configuration de réseaux domestiques ou professionnels pour une connectivité optimale.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 20.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je suis intéressé par les services de réseautage" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 6 - Service Informatique -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="settings" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Service Informatique</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Assistance technique complète pour tous vos besoins informatiques.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">Sur Devis</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je suis intéressé par les services informatiques" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 7 - Récupération Données -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="database" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Récupération de Données</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Récupération de vos fichiers importants à partir de disques endommagés ou corrompus.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 25.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! J'ai besoin de récupération de données" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 8 - Problème Surchauffe -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="thermometer" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Problème de Surchauffe</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Diagnostic et résolution des problèmes de surchauffe pour prolonger la durée de vie de votre matériel.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 15.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Mon ordinateur a des problèmes de surchauffe" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 9 - Mise à jour Sécurité -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="download-cloud" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Mise à jour de Sécurité</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Installation des correctifs de sécurité essentiels pour protéger votre système.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 8.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je veux mettre à jour la sécurité de mon système" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 10 - Activation Windows -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="check-circle" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Activation de Windows</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Activation légitime de votre système d'exploitation Windows.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 7.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! J'ai besoin d'activation de Windows" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 11 - Réparation Ordinateurs -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="tool" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Réparation d'Ordinateurs</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Réparation complète de tous types d'ordinateurs, portables et de bureau.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">Sur Devis</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Mon ordinateur a besoin de réparation" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 12 - Remplacement Batterie -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="battery" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Remplacement de Batterie</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Remplacement de la batterie de votre ordinateur portable pour retrouver son autonomie.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">À partir de 25.000 FCFA</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je veux remplacer la batterie de mon ordinateur portable" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 13 - Création Sites Web -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="code" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Création de Sites Web</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Conception et développement de sites web professionnels adaptés à vos besoins.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">Sur Devis</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! Je suis intéressé par la création d'un site web" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 14 - Dépannage -->
+                <div class="service-card bg-white dark:bg-gray-700 rounded-xl shadow-md transition duration-300 fade-in overflow-hidden">
+                    <div class="image-placeholder">
+                        <i data-feather="help-circle" class="w-16 h-16 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Tous Types de Dépannage</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Solution à tous vos problèmes informatiques, quel que soit leur nature.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 dark:text-blue-400 font-bold">Sur Devis</span>
+                            <a href="https://wa.me/22997442048?text=Bonjour! J'ai besoin de dépannage informatique" 
+                               class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition duration-300 flex items-center">
+                                <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                                Devis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action Services -->
+            <div class="text-center mt-12 fade-in">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Vous ne trouvez pas le service dont vous avez besoin ?</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Contactez-nous pour une solution personnalisée. Notre équipe d'experts est à votre disposition pour tous vos besoins informatiques.
+                </p>
+                <a href="#contact" class="btn-primary bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg inline-flex items-center">
+                    <i data-feather="phone" class="w-5 h-5 mr-2"></i>
+                    Demander un Devis Personnalisé
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-blue-50 dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in text-gray-800 dark:text-white">Témoignages de <span class="text-blue-600 dark:text-blue-400">Clients</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md fade-in transition-colors duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
+                            <i data-feather="user" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Jean D.</h4>
+                            <div class="flex text-yellow-400">
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "Mon ordinateur portable était en panne depuis une semaine. BIDENE SERVICES l'a réparé en moins de 24h. Service rapide et professionnel !"
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md fade-in transition-colors duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
+                            <i data-feather="user" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Marie K.</h4>
+                            <div class="flex text-yellow-400">
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "J'avais perdu toutes mes photos de famille après un crash de disque dur. BIDENE SERVICES a récupéré 100% de mes données. Je recommande vivement !"
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md fade-in transition-colors duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
+                            <i data-feather="user" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Paul T.</h4>
+                            <div class="flex text-yellow-400">
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "Service exceptionnel ! Mon PC surchauffait constamment. L'équipe a résolu le problème rapidement et à un prix très raisonnable. Je reviendrai !"
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md fade-in transition-colors duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
+                            <i data-feather="user" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 dark:text-white">Sophie M.</h4>
+                            <div class="flex text-yellow-400">
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "J'ai fait appel à BIDENE SERVICES pour la création de mon site web. Résultat professionnel, délais respectés et excellent suivi. Très satisfaite !"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in text-gray-800 dark:text-white">Questions <span class="text-blue-600 dark:text-blue-400">Fréquentes</span></h2>
+            <div class="space-y-6">
+                <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl fade-in">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Combien de temps prend une réparation ?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">La plupart des réparations sont effectuées sous 24 à 48 heures. Les cas complexes peuvent nécessiter plus de temps, mais nous vous tenons informé à chaque étape.</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl fade-in">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Proposez-vous une garantie sur vos services ?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Oui, tous nos services sont garantis. La durée de garantie varie selon le type d'intervention, généralement de 1 à 3 mois.</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl fade-in">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Intervenez-vous à domicile ?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Oui, nous proposons des interventions à domicile selon votre localisation. Des frais de déplacement peuvent s'appliquer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-xl overflow-hidden fade-in transition-colors duration-300">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-blue-600 text-white p-8 md:p-12">
+                        <h2 class="text-3xl font-bold mb-6">Contactez <span class="text-yellow-300">BIDENE SERVICES</span></h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i data-feather="map-pin" class="w-6 h-6 mr-4 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Localisation</h4>
+                                    <p class="text-blue-100">Cotonou</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="phone" class="w-6 h-6 mr-4 mt-1 flex-shrink-0 pulse"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Appelez-nous</h4>
+                                    <p class="text-blue-100">+229 01 97 44 20 48</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="message-circle" class="w-6 h-6 mr-4 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">WhatsApp</h4>
+                                    <p class="text-blue-100">+229 97 44 20 48</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="mail" class="w-6 h-6 mr-4 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Email</h4>
+                                    <p class="text-blue-100">gomezjoe1277@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <a href="https://wa.me/22997442048" class="bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition duration-300 flex items-center justify-center">
+                                <i data-feather="message-circle" class="w-5 h-5 mr-2"></i>
+                                Nous contacter sur WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Envoyez-nous un message</h3>
+                        <form class="space-y-4" id="contactForm">
+                            <div>
+                                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Votre Nom *</label>
+                                <input type="text" id="name" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Adresse Email *</label>
+                                <input type="email" id="email" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 dark:text-gray-300 mb-2">Numéro de Téléphone</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-gray-700 dark:text-gray-300 mb-2">Service Demandé</label>
+                                <select id="service" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+                                    <option value="">Sélectionnez un service</option>
+                                    <option value="installation">Installation Windows/Système</option>
+                                    <option value="logiciel">Installation Logiciel</option>
+                                    <option value="virus">Nettoyage Virus</option>
+                                    <option value="formatage">Formatage</option>
+                                    <option value="reseau">Réseautage</option>
+                                    <option value="donnees">Récupération Données</option>
+                                    <option value="surchauffe">Problème Surchauffe</option>
+                                    <option value="securite">Mise à jour Sécurité</option>
+                                    <option value="activation">Activation Windows</option>
+                                    <option value="reparation">Réparation Ordinateur</option>
+                                    <option value="batterie">Remplacement Batterie</option>
+                                    <option value="siteweb">Création Site Web</option>
+                                    <option value="depannage">Dépannage</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Votre Message *</label>
+                                <textarea id="message" rows="4" class="form-input w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 w-full">
+                                Envoyer le Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-12 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="logo-container">
+                            <svg width="40" height="40" viewBox="0 0 200 200" class="text-blue-400">
+                                <rect x="30" y="40" width="140" height="100" rx="10" fill="currentColor" opacity="0.9"/>
+                                <rect x="40" y="50" width="120" height="70" fill="#1e40af" opacity="0.8"/>
+                                <rect x="50" y="60" width="40" height="15" fill="#60a5fa" opacity="0.9"/>
+                                <rect x="100" y="60" width="40" height="15" fill="#60a5fa" opacity="0.9"/>
+                                <rect x="50" y="80" width="90" height="10" fill="#93c5fd" opacity="0.8"/>
+                                <rect x="50" y="95" width="70" height="10" fill="#93c5fd" opacity="0.8"/>
+                                <rect x="70" y="140" width="60" height="10" fill="currentColor" opacity="0.8"/>
+                                <circle cx="55" cy="165" r="8" fill="#10b981"/>
+                                <circle cx="85" cy="165" r="8" fill="#f59e0b"/>
+                                <circle cx="115" cy="165" r="8" fill="#ef4444"/>
+                                <text x="100" y="190" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">BIDENE</text>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-xl">BIDENE SERVICES</span>
+                            <span class="text-sm text-gray-400">Votre Expert Informatique</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">
+                        Service de réparation d'ordinateurs professionnel. Avec des experts certifiés, votre matériel informatique est entre de bonnes mains.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Liens Rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Accueil</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">À Propos</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Nos Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Réparation Ordinateurs</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Installation Windows</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Récupération Données</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Création Sites Web</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contactez-nous</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 mr-2"></i>
+                            +229 01 97 44 20 48
+                        </p>
+                        <p class="flex items-center">
+                            <i data-feather="message-circle" class="w-4 h-4 mr-2"></i>
+                            +229 97 44 20 48 WhatsApp
+                        </p>
+                        <p class="flex items-center">
+                            <i data-feather="mail" class="w-4 h-4 mr-2"></i>
+                            gomezjoe1277@gmail.com
+                        </p>
+                        <p class="flex items-start">
+                            <i data-feather="map-pin" class="w-4 h-4 mr-2 mt-1"></i>
+                            Cotonou
+                        </p>
+                    </div>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://wa.me/22997442048" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                            <i data-feather="message-circle" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition duration-300">
+                            <i data-feather="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-400 transition duration-300">
+                            <i data-feather="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 BIDENE SERVICES. Tous droits réservés. | Conçu avec ❤️ pour vos besoins informatiques</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            feather.replace();
+        });
+        
+        // Mobile Menu
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+        
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+        
+        // Loading Bar Animation
+        window.addEventListener('load', () => {
+            const loadingBar = document.getElementById('loadingBar');
+            loadingBar.style.width = '100%';
+            setTimeout(() => {
+                loadingBar.style.opacity = '0';
+                setTimeout(() => {
+                    loadingBar.remove();
+                }, 300);
+            }, 500);
+        });
+        
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Form Validation
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Ici vous pouvez ajouter le code pour envoyer le formulaire
+            alert('Merci pour votre message ! Nous vous contacterons rapidement.');
+            contactForm.reset();
+        });
+        
+        // Animation for elements on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Stagger animation for service cards
+                        if (entry.target.classList.contains('service-card')) {
+                            const delay = Array.from(fadeElements).indexOf(entry.target) * 100;
+                            entry.target.style.transitionDelay = `${delay}ms`;
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Counter animation for stats
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(() => {
+                        updateCounter(counter, target, speed);
+                    }, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+            
+            function updateCounter(counter, target, speed) {
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(() => {
+                        updateCounter(counter, target, speed);
+                    }, 1);
+                } else {
+                    counter.innerText = target;
+                    if (target === 98) {
+                        counter.innerText = target + '%';
+                    } else if (target === 500) {
+                        counter.innerText = target + '+';
+                    } else if (target === 30) {
+                        counter.innerText = target + '+';
+                    }
+                }
+            }
+            
+            // Add hover effect to service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
